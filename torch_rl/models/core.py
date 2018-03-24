@@ -49,7 +49,7 @@ class StochasticNeuralNet(NeuralNet):
         if not action_distribution:
             action_distribution = self.out
         action_distribution = action_distribution.cpu().data.numpy()
-        action = np.random.choice(action_distribution, p=action_distribution)
+        action = np.random.choice(action_distribution, p=action_distribution).flatten()
         action = np.argmax(action_distribution == action)
         return action
 
